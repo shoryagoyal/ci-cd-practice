@@ -21,6 +21,7 @@ jobs:
             - name: Install Firebase CLI
               uses: google/firebase-tools@v1
             - name: Login to Firebase
+              uses: appleboy/facebook-action@master
               with:
                   service_account: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
             - name: Deploy to Firebase Hosting
