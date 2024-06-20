@@ -13,3 +13,16 @@ jobs:
                   node-version: 16
             - name: Install dependencies
               run: npm install
+    deploy:
+        runs-on: ubuntu-latest
+        needs: [build]
+        steps:
+            - uses: actions/checkout@v3
+            - name: Install Firebase CLI
+                uses: google/firebase-tools@v1
+            - name: Login to Firebase
+                uses: appleboy/fb-login-action@v1.5.0
+                with:
+                    service_account: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
+            - name: Deploy to Firebase Hosting
+                run: firebase deploy --only hosting
