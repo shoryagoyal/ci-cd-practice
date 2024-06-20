@@ -19,7 +19,8 @@ jobs:
         steps:
             - uses: actions/checkout@v3
             - name: Install Firebase CLI
-              uses: google/firebase-tools@v1
+              #   uses: google/firebase-tools@v1
+              run: npm install -g firebase-tools
             - name: Login to Firebase
               uses: appleboy/facebook-action@master
               with:
